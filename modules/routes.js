@@ -99,4 +99,17 @@ module.exports = async(router) => {
 
     });
 
+    router.delete('/api/:id', basicAuth({
+        authorizer,
+        challenge: true
+    }), (req, res) => {
+
+        const { id } = req.params;
+
+        var result = dbmgr.deleteUrl(id);
+
+        return res.status(200).json(result);
+
+    });
+
 };

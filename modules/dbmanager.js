@@ -57,6 +57,18 @@ function getAll() {
 
 };
 
+function deleteUrl(id) {
+
+    db = db.filter(x => x.id != id);
+
+    console.log(db);
+
+    fs.writeFileSync(dbPath, JSON.stringify(db));
+
+    return db;
+
+};
+
 //! Internal functions not to be exported
 
 function urlExists(longUrl) {
@@ -71,5 +83,6 @@ function urlExists(longUrl) {
 module.exports = {
     addUrl,
     getUrl,
-    getAll
+    getAll,
+    deleteUrl
 };
